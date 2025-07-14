@@ -5,7 +5,7 @@ import '../../../../core/errors/failure.dart';
 import '../datasource/datasource.dart';
 
 class Repository {
-  final DataSource dataSource;
+  final HomeDataSource dataSource;
 
   Repository(this.dataSource);
 

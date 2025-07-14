@@ -4,9 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:testing/core/extensions/padding_extensions.dart';
 import 'package:testing/core/widgets/base_screen.dart';
 import 'package:testing/core/widgets/custom_button.dart';
-
-import '../../../../core/config/app_text_styles.dart';
-import '../../../../core/constants/app_colors.dart';
 import '../../../../core/utils/validators.dart';
 
 class LoginScreen extends HookWidget {
