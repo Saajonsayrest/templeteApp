@@ -10,8 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseScreen(
       pageTitle: 'Glass Page',
-      isScrollable: true,
-      isBackButton: true,
+      hasBackButton: false,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

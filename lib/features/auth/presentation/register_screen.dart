@@ -9,7 +9,7 @@ class RegisterScreen extends StatelessWidget {
     return BaseScreen(
       pageTitle: 'Register',
       isScrollable: false,
-      isBackButton: true,
+      hasBackButton: true,
       child: Column(
         children: [],
       ),

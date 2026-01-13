@@ -4,10 +4,10 @@ import 'package:equatable/equatable.dart';
 
 import '../../../core/enums/request_status.dart';
 import '../../../core/errors/failure.dart';
-import '../data/models/home_respone.dart';
-import '../data/repository/repository.dart';
+import '../models/home_respone.dart';
+import '../../common/repository.dart';
 
-part 'home_event.dart';
+part '../../home/bloc/home_event.dart';
 
 part 'home_state.dart';
 

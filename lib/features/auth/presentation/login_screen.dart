@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:testing/core/extensions/padding_extensions.dart';
 import 'package:testing/core/widgets/base_screen.dart';
 import 'package:testing/core/widgets/custom_button.dart';
-import '../../../../core/utils/validators.dart';
+import '../../../core/utils/validators.dart';
 
 class LoginScreen extends HookWidget {
   const LoginScreen({super.key});
@@ -26,7 +26,7 @@ class LoginScreen extends HookWidget {
     return BaseScreen(
       pageTitle: 'Login',
       isScrollable: true,
-      isBackButton: false,
+      hasBackButton: false,
       child: Form(
         key: formKey,
         child: Column(
