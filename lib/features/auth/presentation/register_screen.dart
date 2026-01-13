@@ -7,9 +7,9 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      pageTitle: 'Register',
-      isScrollable: false,
-      hasBackButton: true,
+      title: 'Register',
+      scrollable: false,
+      showBackButton: true,
       child: Column(
         children: [],
       ),

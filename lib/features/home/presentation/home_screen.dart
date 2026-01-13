@@ -9,8 +9,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      pageTitle: 'Glass Page',
-      hasBackButton: false,
+      title: 'Glass Page',
+      showBackButton: false,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

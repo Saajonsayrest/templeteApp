@@ -24,9 +24,9 @@ class LoginScreen extends HookWidget {
     }
 
     return BaseScreen(
-      pageTitle: 'Login',
-      isScrollable: true,
-      hasBackButton: false,
+      title: 'Login',
+      scrollable: true,
+      showBackButton: false,
       child: Form(
         key: formKey,
         child: Column(
@@ -61,9 +61,7 @@ class LoginScreen extends HookWidget {
                 prefixIcon: const Icon(Icons.lock),
                 suffixIcon: IconButton(
                   icon: Icon(
-                    obscurePassword.value
-                        ? Icons.visibility_off
-                        : Icons.visibility,
+                    obscurePassword.value ? Icons.visibility_off : Icons.visibility,
                   ),
                   onPressed: () {
                     obscurePassword.value = !obscurePassword.value;
