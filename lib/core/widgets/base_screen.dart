@@ -17,53 +17,67 @@ class BaseScreen extends StatelessWidget {
     this.onRefresh,
     this.scrollable = true,
     this.showBackButton = true,
-    this.scaffoldKey,
     this.backgroundColor,
+    this.floatingActionButton,
+    this.bottomNavigationBar,
+    this.applyHorizontalPadding = true,
   });
 
   final Widget child;
+
+  /// AppBar
   final String? title;
   final Widget? drawer;
   final Widget? trailing;
   final VoidCallback? onRefresh;
-  final bool scrollable;
   final bool showBackButton;
-  final GlobalKey<ScaffoldState>? scaffoldKey;
+
+  /// Layout
+  final bool scrollable;
+  final bool applyHorizontalPadding;
   final Color? backgroundColor;
+
+  /// Extras
+  final Widget? floatingActionButton;
+  final Widget? bottomNavigationBar;
 
   @override
   Widget build(BuildContext context) {
-    final hasAppBar = title != null;
+    final bool hasAppBar = title != null;
+    final bool hasDrawer = drawer != null;
 
     return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: backgroundColor ?? AppColors.white,
+      backgroundColor: backgroundColor ?? AppColors.background,
       resizeToAvoidBottomInset: true,
-      drawer: drawer != null ? Drawer(child: drawer!) : null,
+      drawer: hasDrawer ? Drawer(child: drawer!) : null,
+      floatingActionButton: floatingActionButton,
+      bottomNavigationBar: bottomNavigationBar,
       appBar: hasAppBar
           ? AppBar(
               backgroundColor: AppColors.primary,
-              centerTitle: true,
               elevation: 0,
+              centerTitle: true,
               title: Text(
                 title!,
-                style: AppTextStyle.medium(20).copyWith(color: AppColors.secondary),
+                style: AppTextStyle.medium(20).copyWith(color: AppColors.white),
               ),
-              leading: drawer != null
-                  ? IconButton(
-                      icon: const Icon(Icons.menu, color: AppColors.secondary),
-                      onPressed: () => scaffoldKey?.currentState?.openDrawer(),
+              leading: hasDrawer
+                  ? Builder(
+                      builder: (context) => IconButton(
+                        icon: const Icon(Icons.menu, color: AppColors.white),
+                        onPressed: () => Scaffold.of(context).openDrawer(),
+                      ),
                     )
                   : showBackButton
                       ? IconButton(
-                          icon: const Icon(Icons.arrow_back, color: AppColors.secondary),
+                          icon: const Icon(Icons.arrow_back, color: AppColors.white),
                           onPressed: () => context.pop(),
                         )
                       : null,
               actions: [
                 if (onRefresh != null)
                   IconButton(
-                    icon: const Icon(Icons.autorenew, color: AppColors.secondary),
+                    icon: const Icon(Icons.autorenew, color: AppColors.white),
                     onPressed: onRefresh,
                   ).pR(8.w)
                 else if (trailing != null)
@@ -72,12 +86,11 @@ class BaseScreen extends StatelessWidget {
             )
           : null,
       body: SafeArea(
-        bottom: true,
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
           onTap: () => FocusScope.of(context).unfocus(),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: applyHorizontalPadding ? EdgeInsets.symmetric(horizontal: 16.w) : EdgeInsets.zero,
             child: scrollable
                 ? LayoutBuilder(
                     builder: (_, constraints) {
